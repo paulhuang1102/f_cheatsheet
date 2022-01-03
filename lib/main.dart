@@ -1,3 +1,4 @@
+import 'package:f_cheatsheet/bottomsheet/glass_modal/index.dart';
 import 'package:f_cheatsheet/staggle_grid/index.dart';
 import 'package:flutter/material.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
@@ -8,6 +9,11 @@ void main() {
   runApp(const MyApp());
 }
 
+const button = 'Button';
+const grid = 'Grid';
+const bottomSheet = 'BottomSheet';
+const animation = 'Animation';
+const input = 'Input';
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -15,9 +21,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => Storybook(
         children: [
           Story(
+            section: button,
             name: 'Flat button',
             padding: const EdgeInsets.all(5), // optional padding customization
-            background: Colors.red, // optional background color customization
             builder: (_, k) => MaterialButton(
               onPressed:
                   k.boolean(label: 'Enabled', initial: true) ? () {} : null,
@@ -25,6 +31,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
           Story(
+            section: button,
             name: 'Raised button',
             builder: (_, k) => ElevatedButton(
               onPressed:
@@ -43,14 +50,23 @@ class MyApp extends StatelessWidget {
             ),
           ),
           Story(
+            section: grid,
             name: 'Staggle grid view',
             builder: (_, k) => const StaggleGrid(),
           ),
           Story(
+            section: animation,
             name: 'Animated Switcher',
-            builder: (_, k) => AnimatedPage(),
+            builder: (_, k) => const AnimatedPage(),
+          ),
+          Story(
+            name: 'Glass Modal Bottom Sheet',
+            builder: (_, k) => const GlassModalBottomSheet(),
+            section: bottomSheet,
+            wrapperBuilder: (context, story, child) => MaterialApp(home: child),
           ),
           Story.simple(
+            section: input,
             name: 'Input field',
             child: const TextField(
               decoration: InputDecoration(
