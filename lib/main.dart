@@ -2,6 +2,8 @@ import 'package:f_cheatsheet/staggle_grid/index.dart';
 import 'package:flutter/material.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
+import 'animated_switcher/index.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -43,6 +45,10 @@ class MyApp extends StatelessWidget {
           Story(
             name: 'Staggle grid view',
             builder: (_, k) => const StaggleGrid(),
+          ),
+          Story(
+            name: 'Animated Switcher',
+            builder: (_, k) => AnimatedPage(),
           ),
           Story.simple(
             name: 'Input field',
